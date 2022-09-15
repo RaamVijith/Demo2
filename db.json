@@ -1,0 +1,44 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    },
+    {
+      "id": 2
+    }
+  ],
+  "users": [
+    {
+      "id": "2",
+      "name": "vijith",
+      "age": "111"
+    },
+    {
+      "id": "12",
+      "name": "vi2jith",
+      "age": "11211"
+    },
+    {
+      "id": "22",
+      "name": "vi21jith",
+      "age": "1121"
+    },
+    {
+      "id": "232",
+      "name": "vi22221jith",
+      "age": "13333121"
+    },
+    {
+      "id": "0JOOEIm"
+    }
+  ],
+  "auth": [
+    {
+      "id":"1",
+      "username":"vijith",
+      "password":"12345678"
+    }
+  ]
+}
