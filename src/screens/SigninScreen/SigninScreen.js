@@ -1,4 +1,4 @@
-import React, { useState} from 'react';
+import React, { useState, useContext} from 'react';
 import {Text, View, Image, StyleSheet, useWindowDimensions, ScrollView } from 'react-native';
 import CustomInput from '../../components/customInput/CustomInput';
 import SocialSigninButton from '../../components/SocialSigninButton/SocialSigninButton';
@@ -8,31 +8,53 @@ import { color } from 'react-native-reanimated';
 import { useForm, Controller } from 'react-hook-form';
 import { TextInput } from 'react-native-gesture-handler';
 import { removeData } from 'jquery';
-
-
-
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import axios from 'axios';
+import { AuthContext } from '../../context/AuthContext';
 
 
 
 const SigninScreen=()=>{
     const {height}=useWindowDimensions();
-    const {username, setUsername}= useState();
-    const {password, setPassword}= useState();
+    const [username, setUsername]= useState();
+    const [password, setPassword]= useState();
     const Navigation= useNavigation();
     const {control, handleSubmit, formState:{errors}}= useForm();
     console.log(errors);
 
-    const onSignInPressed=(data)=>{       
-        console.log(data);
-        //validate user
+    const {login, userToken}=useContext(AuthContext);
+
+    const onSignInPressed=(data)=>{           
+        console.log(data.username)
+        console.log(data.password)
+       login();
+       
+   {/* const req ={
+        "email": username,
+    "password": password       
         
-        Navigation.navigate('HomeScreen');
+    }
+    axios.post('http://localhost:3000/auth',req)
+        .then(
+            res=>{
+                Navigation.navigate('ConfirmEmail');
+            },
+            err=>{
+                alert('user password is wrong')
+                console.warn(username,password);
+            }
+        )
+        .catch(error => console.log(error));
+        //validate user
+        */}
+        
     };
 
     const onForgotPasswordPressed=()=>{       
 
         Navigation.navigate('ForgotPassword');
-    };  
+    }; 
+     
     const onSignUpPress=()=>{
         Navigation.navigate('SignUp');
     };
@@ -44,16 +66,18 @@ const SigninScreen=()=>{
      <View style={styles.root} >
       
         <Image style={[styles.image, {height:height*0.32}]} source={{uri: "https://img.freepik.com/premium-vector/letter-r-logo-arrow-design-technology-3d-colorful-icons_345408-665.jpg?w=2000"}}/>
-       
-        <CustomInput
+                   
+
+          <CustomInput
             name="username"
             placeholder="Username"
             control={control}
             rules={{required:'user name is required',
                    }}
             secureTextEntry={false}
+            
         />
-        <CustomInput
+           <CustomInput
             name="password"
             placeholder="Password"
             control={control}
@@ -63,7 +87,7 @@ const SigninScreen=()=>{
                         message:'password should more 8 charectors'
                     }}}
             secureTextEntry={true}
-        />
+        />  
 
         
 
@@ -86,7 +110,7 @@ const SigninScreen=()=>{
         onPress={onSignUpPress} 
         type='TERTIARY'/>
 
-        
+       
    
     </View>
     </ScrollView>

@@ -1,8 +1,7 @@
 import React from 'react';
 import { Text, View, StyleSheet, SafeAreaView } from 'react-native';
 import Navigation from './src/Navigation';
-import PostRequestExample from './examples/PostRequestExample';
-import { Component } from './examples/componentss';
+import { AuthProvider } from './src/context/AuthContext';
 
 
 
@@ -12,12 +11,16 @@ const App = () => {
 
   return (
       
+<AuthProvider>
+<SafeAreaView style={styles.root}>
 
-    <SafeAreaView style={styles.root}>
     
-    <Navigation/>
+    
+<Navigation/>
 
-    </SafeAreaView> 
+</SafeAreaView> 
+</AuthProvider>
+    
   );
 };
 

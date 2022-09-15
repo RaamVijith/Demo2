@@ -6,7 +6,7 @@ import { TextInput } from 'react-native-gesture-handler';
 
 
 
-const CustomInput=({rules={},control,name, placeholder, secureTextEntry})=>{
+const CustomInput=({rules={},control,name, placeholder, secureTextEntry,})=>{
  
     return(
         

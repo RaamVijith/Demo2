@@ -7,10 +7,16 @@ import { useNavigation } from '@react-navigation/native';
 import { useForm, Controller } from 'react-hook-form';
 
 
+
 const EMAIL_REGEX =
   /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
 const SignupScreen=()=>{
+    const {username, setUsername}= useState('');
+    const {email, setemail}= useState('');
+    const {password, setPassword}= useState('');
+    const {repeatPassword, setrepeatPassword}= useState('')
+
     const {height}=useWindowDimensions();
 
     const {control, handleSubmit, watch}= useForm();
